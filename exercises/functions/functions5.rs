@@ -11,5 +11,5 @@ fn main() {
 }
 
 fn square(num: i32) -> i64 {
-    (num * num).into(i64)
+    (num * num).into(i64)           //强转：into（）
 }
