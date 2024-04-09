@@ -20,7 +20,7 @@ fn main() {
     string_slice("blue");
     string("red".to_string());
     string(String::from("hi"));
-    string("rust is fun!".to_owned());
+    string("rust is fun!".to_owned());//Creates owned data from borrowed data, usually by cloning.
     string("nice weather".into());
     string(format!("Interpolation {}", "Station"));
     string_slice(&String::from("abc")[0..1]);
