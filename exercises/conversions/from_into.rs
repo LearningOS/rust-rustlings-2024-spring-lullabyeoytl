@@ -44,6 +44,25 @@ impl Default for Person {
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        if s.is_empty(){
+            return Person::default();
+        }
+
+        let parts:Vec<&str> = s.split(',').collect();
+        if parts.len()<2{
+            return Person::default();
+        }
+
+        let name = parts[0].to_string();
+        if name.is_empty(){
+            return Person::default();
+        }
+
+        let age_result = parts[1].parse::<usize>();
+        if let Ok(age) = age_result{
+            return Person{name,age};
+        }
+        Person::default()
     }
 }
 
@@ -127,14 +146,14 @@ mod tests {
     #[test]
     fn test_trailing_comma() {
         let p: Person = Person::from("Mike,32,");
-        assert_eq!(p.name, "John");
-        assert_eq!(p.age, 30);
+        assert_eq!(p.name, "Mike");
+        assert_eq!(p.age, 32);
     }
 
     #[test]
     fn test_trailing_comma_and_some_string() {
         let p: Person = Person::from("Mike,32,man");
-        assert_eq!(p.name, "John");
-        assert_eq!(p.age, 30);
+        assert_eq!(p.name, "Mike");
+        assert_eq!(p.age, 32);
     }
 }

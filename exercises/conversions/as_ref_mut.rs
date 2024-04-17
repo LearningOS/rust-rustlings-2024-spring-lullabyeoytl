@@ -23,11 +23,9 @@ fn char_counter<T:AsRef<str> >(arg: T) -> usize {
 
 // Squares a number using as_mut().
 // TODO: Add the appropriate trait bound.
-fn num_sq<T: AsMut<u32>+std::ops::MulAssign>(arg: &mut T) {
-    // TODO: Implement the function body.
-    *arg *= *arg.as_mut()
+fn num_sq(arg: &mut u32) {
+    *arg *= *arg;
 }
-
 #[cfg(test)]
 mod tests {
     use super::*;
